@@ -3,17 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" id="favicon">
         <script src="https://cdn.tailwindcss.com"></script>
-        <script src="../static/js/toast.min.js"></script>
-        <link rel="icon" href="../static/img/favicon.ico">
+        <script src="{{ url_for('static', filename='js/toast.min.js') }}"></script>
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body class="flex flex-col min-h-full bg-gray-100">
         <!-- Header -->
         <nav class="px-6 py-4 bg-white shadow ">
             <div class="flex items-center max-w-screen-lg mx-auto">
-                <a href="" class="flex-auto">
-                    <img class="h-7" src="../static/img/O.png" alt="Ochannel site logo" />
+                <a href="{{ url_for('index') }}" class="flex-auto">
+                    <img class="h-8" src="{{ url_for('static', filename='img/O.png') }}"
+                        alt="Ochannel site logo" />
                 </a>
                 <div>
                     <a href="#" class="mx-2 hover:text-blue-500">BoardList</a>

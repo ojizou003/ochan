@@ -1,7 +1,7 @@
 from datetime import datetime
 import pytz
 
-from flask import Flask, flash, render_template, request, redirect
+from flask import Flask, flash, render_template, request, redirect, url_for
 from flask_wtf.csrf import CSRFProtect
 
 from config import Config
@@ -15,10 +15,11 @@ app.config.from_object(Config)
 csrf = CSRFProtect(app)
 db.init_app(app)
 
-app.jinja_env.filters["datetimeformat"] = datetimeformat
-app.jinja_env.filters["authorformat"] = authorformat
-app.jinja_env.filters["whoformat"] = whoformat
-app.jinja_env.filters["uuidshort"] = uuidshort
+app.add_template_filter(datetimeformat)
+app.add_template_filter(authorformat)
+app.add_template_filter(whoformat)
+app.add_template_filter(uuidshort)
+
 
 @app.get("/")
 def index():
@@ -70,9 +71,10 @@ def thread(thread_id):
         )
         thread.reses.append(res)
         db.session.commit()
-        return redirect(request.url)
+        return redirect(url_for("thread", thread_id=thread_id, _anchor="res-form"))
 
-    return render_template("thread.html", thread=thread, form=form)
+    anchor = "res-form" if form.is_submitted() else None
+    return render_template("thread.html", thread=thread, form=form, anchor=anchor)
 
 if __name__ == '__main__':
     app.run(debug=True)
