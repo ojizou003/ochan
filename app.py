@@ -1,7 +1,7 @@
 from datetime import datetime
 import pytz
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, flash, render_template, request, redirect
 from flask_wtf.csrf import CSRFProtect
 
 from config import Config
@@ -23,6 +23,7 @@ app.jinja_env.filters["uuidshort"] = uuidshort
 @app.get("/")
 def index():
     board_categories = BoardCategory.query.all()
+    flash('welcome')
     return render_template("index.html", board_categories=board_categories)
 
 @app.route("/boards/<board_id>", methods=["GET", "POST"])
