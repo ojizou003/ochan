@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}データベースエラー{% endblock %}
+{% block content %}
+<div class="flex flex-col items-center">
+    <h1>データベースエラー</h1>
+    <p>申し訳ありませんが、データベースでエラーが発生しました。</p>
+    <p>しばらく時間をおいてから再度お試しください。</p>
+    <p><a href="{{ url_for('index') }}">ホームページに戻る</a></p>
+</div>
+{% endblock %}
+        

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}500エラー{% endblock %}
+{% block content %}
+<div class="flex flex-col items-center">
+    <h1>500 - サーバーエラー</h1>
+    <p>申し訳ありませんが、サーバーで問題が発生しました。</p>
+    <p>しばらく時間をおいてから再度お試しください。</p>
+    <p><a href="{{ url_for('index') }}">ホームページに戻る</a></p>
+</div>
+{% endblock %}
+        
