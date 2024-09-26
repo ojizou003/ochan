@@ -3,6 +3,7 @@ import pytz
 
 from flask import Flask, flash, render_template, request, redirect, url_for, jsonify
 from werkzeug.exceptions import HTTPException
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import SQLAlchemyError
 import logging
 from flask_wtf.csrf import CSRFProtect
@@ -10,15 +11,17 @@ from flask_wtf.csrf import CSRFProtect
 from config import Config
 from filters import authorformat, datetimeformat, whoformat, uuidshort
 from forms import ResForm, ThreadForm
-from models import Board, BoardCategory, Res, Thread, db
+from models import Board, BoardCategory, Res, Thread
 from utils import get_b64encoded_digest_string_from_words, normalize_uuid_string
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/ojizou003/ochan/project.db'
 app.config.from_object(Config)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/ojizou003/ochan/project.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.debug = Config.DEBUG
 csrf = CSRFProtect(app)
-db.init_app(app)
+
+db = SQLAlchemy(app)
 
 app.add_template_filter(datetimeformat)
 app.add_template_filter(authorformat)

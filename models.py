@@ -2,10 +2,10 @@ import json
 import uuid
 from datetime import datetime
 
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID as PostgreUUID
 from sqlalchemy.types import CHAR, TypeDecorator
 
+from app import db
 from config import (
     ANON_NAME_MAX_LENGTH,
     BOARD_CATEGORY_NAME_MAX_LENGTH,
@@ -14,8 +14,6 @@ from config import (
     EMAIL_MAX_LENGTH,
     THREAD_NAME_MAX_LENGTH,
 )
-
-db = SQLAlchemy()
 
 class UUID(TypeDecorator):
     impl = CHAR
