@@ -10,18 +10,20 @@ from flask_wtf.csrf import CSRFProtect
 
 from config import Config
 from filters import authorformat, datetimeformat, whoformat, uuidshort
-from forms import ResForm, ThreadForm
-from models import Board, BoardCategory, Res, Thread
 from utils import get_b64encoded_digest_string_from_words, normalize_uuid_string
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/ojizou003/ochan/project.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = Config.get_database_url()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.debug = Config.DEBUG
 csrf = CSRFProtect(app)
 
 db = SQLAlchemy(app)
+
+# 以下のインポートを、db の初期化後に移動
+from models import Board, BoardCategory, Res, Thread
+from forms import ResForm, ThreadForm
 
 app.add_template_filter(datetimeformat)
 app.add_template_filter(authorformat)
