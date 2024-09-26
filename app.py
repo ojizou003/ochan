@@ -14,6 +14,7 @@ from models import Board, BoardCategory, Res, Thread, db
 from utils import get_b64encoded_digest_string_from_words, normalize_uuid_string
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/ojizou003/ochan/project.db'
 app.config.from_object(Config)
 app.debug = Config.DEBUG
 csrf = CSRFProtect(app)
