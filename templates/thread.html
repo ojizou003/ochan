@@ -13,7 +13,7 @@
 </div>
 <!-- Main.Reses -->
 <div>
-    {% for res in thread.reses %}
+    {% for res in thread.sorted_reses %}
     <div class="p-2 mt-2 bg-white rounded-lg">
         <p class="font-medium">
             {{ res.number }} 名前:{{ res.anon_name | authorformat(res.anon_email) }}
@@ -23,6 +23,16 @@
     </div>
     {% endfor %}
 </div>
+<!-- 追加: スクロール位置を調整 -->
+<script>
+    window.onload = function() {
+        const resDivs = document.querySelectorAll('.p-2.mt-2.bg-white.rounded-lg');
+        if (resDivs.length > 0) {
+            const lastResIndex = Math.max(resDivs.length - 5, 0); // 最後から5つ前のレスを表示
+            resDivs[lastResIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+</script>
 <!-- Main.Form -->
 <div>
     <p class="text-lg font-bold">レスを投稿する</p>
@@ -48,6 +58,14 @@
                 class="p-4 mt-4 font-semibold leading-none text-white bg-blue-500 rounded hover:bg-blue-400 focus:ring-offset-2 focus:ring-blue-500 focus:outline-none">
                 書き込む
             </button>
+            <!-- 追加:前のページに戻るボタン -->
+            <a href="javascript:history.back()" class="p-4 mt-4 ml-2 font-semibold leading-none text-white bg-gray-500 rounded hover:bg-gray-400 focus:ring-offset-2 focus:ring-gray-500 focus:outline-none">
+                前のページに戻る
+            </a>
+            <!-- 追加: boardlistに戻るボタン -->
+            <a href="{{ url_for('index') }}" class="p-4 mt-4 ml-2 font-semibold leading-none text-white bg-gray-500 rounded hover:bg-gray-400 focus:ring-offset-2 focus:ring-gray-500 focus:outline-none">
+                BoardListに戻る
+            </a>
         </div>
     </form>
 </div>

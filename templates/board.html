@@ -47,6 +47,14 @@
                 class="p-4 mt-4 font-semibold leading-none text-white bg-blue-500 rounded hover:bg-blue-400 focus:ring-offset-2 focus:ring-blue-500 focus:outline-none">
                 スレッドを立てる
             </button>
+            <!-- 追加:前のページに戻るボタン -->
+            <a href="javascript:history.back()" class="p-4 mt-4 ml-2 font-semibold leading-none text-white bg-gray-500 rounded hover:bg-gray-400 focus:ring-offset-2 focus:ring-gray-500 focus:outline-none">
+                前のページに戻る
+            </a>
+            <!-- 追加: boardlistに戻るボタン -->
+            <a href="{{ url_for('index') }}" class="p-4 mt-4 ml-2 font-semibold leading-none text-white bg-gray-500 rounded hover:bg-gray-400 focus:ring-offset-2 focus:ring-gray-500 focus:outline-none">
+                BoardListに戻る
+            </a>
         </div>
     </form>
 </div>

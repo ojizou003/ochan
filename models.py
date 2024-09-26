@@ -75,6 +75,10 @@ class Thread(UUIDMixin, TimestampMixin, db.Model):
     reses = db.relationship("Res", backref="thread")
 
     @property
+    def sorted_reses(self):
+        return sorted(self.reses, key=lambda res: res.number)
+
+    @property
     def reses_count(self) -> int:
         return len(self.reses)
 

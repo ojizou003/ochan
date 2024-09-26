@@ -27,6 +27,10 @@ def index():
     flash('welcome')
     return render_template("index.html", board_categories=board_categories)
 
+@app.route("/guideline")
+def guideline():
+    return render_template("guideline.html")
+
 @app.route("/boards/<board_id>", methods=["GET", "POST"])
 def board(board_id):
     board_uuid = normalize_uuid_string(board_id)

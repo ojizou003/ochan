@@ -4,7 +4,7 @@
 <div class="flex flex-col items-center">
     <h1 class="mt-2"><img class="max-w-xs" src="/static/img/O.png" alt="Ochannel site logo"></h1>
     <h2 class="font-bold mt-1 text-xl">時代を逆行する不適切な巨大掲示板へようこそ！</h2>
-    <p>一応<a class="text-blue-500" href="/guideline">ガイドライン</a>を一読してからご利用ください</p>
+    <p>一応<a class="text-blue-500" href="{{ url_for('guideline') }}">ガイドライン</a>を一読してからご利用ください</p>
 </div>
 <div class="bg-white rounded-lg mt-4">
     <div class="bg-blue-500 p-2 text-white text-lg font-bold rounded-t-lg">BoardList</div>
@@ -18,6 +18,12 @@
         </div>
         {% endfor %}
     </div>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-300 text-center">
+    <p class="text-sm text-gray-600">
+        管理人: おぢぞう
+        <a href="mailto:sinissi@gmail.com" class="text-blue-600 hover:underline">sinissi@gmail.com</a>
+    </p>
 </div>
 
 {% endblock %}
