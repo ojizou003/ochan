@@ -15,6 +15,7 @@ from utils import get_b64encoded_digest_string_from_words, normalize_uuid_string
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config['SQLALCHEMY_DATABASE_URI'] = Config.get_database_url()
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_recycle': 280}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.debug = Config.DEBUG
 csrf = CSRFProtect(app)
