@@ -1,7 +1,4 @@
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 ANON_NAME_MAX_LENGTH = 50
 EMAIL_MAX_LENGTH = 255
@@ -12,12 +9,12 @@ THREAD_NAME_MAX_LENGTH = 100
 BODY_MAX_LENGTH = 1000
 
 class Config:
-    DB_HOST = os.getenv('DB_HOST')
-    DB_NAME = os.getenv('DB_NAME')
-    DB_USER = os.getenv('DB_USER')
-    DB_PASS = os.getenv('DB_PASS')
-    SECRET_KEY = os.getenv('SECRET_KEY')
-    DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 't')
+    DB_HOST = os.environ.get('DB_HOST', 'localhost')
+    DB_NAME = os.environ.get('DB_NAME', 'default_db_name')
+    DB_USER = os.environ.get('DB_USER', 'default_user')
+    DB_PASS = os.environ.get('DB_PASS', 'default_password')
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'default_secret_key')
+    DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
 
     @staticmethod
     def get_database_url():
