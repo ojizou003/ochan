@@ -18,4 +18,4 @@ class Config:
 
     @staticmethod
     def get_database_url():
-        return f"mysql+mysqldb://{Config.DB_USER}:{Config.DB_PASS}@{Config.DB_HOST}/{Config.DB_NAME}"
+        return f"mysql+pymysql://{Config.DB_USER}:{Config.DB_PASS}@{Config.DB_HOST}/{Config.DB_NAME}"
