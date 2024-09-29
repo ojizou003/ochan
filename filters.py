@@ -21,8 +21,9 @@ def datetimeformat(dt: datetime):
     if not dt.tzinfo:
         dt = dt.replace(tzinfo=timezone.utc)
     dt_jp = dt.astimezone(pytz.timezone('Asia/Tokyo'))
-    msec = dt_jp.microsecond // 1000
-    html = f'{dt_jp.strftime("%Y%m%d(%a) %H:%M:%S")}<span class="text-xs text-gray-300">.{msec:03}</span>'
+    # msec = dt_jp.microsecond // 1000
+    # html = f'{dt_jp.strftime("%Y%m%d(%a) %H:%M:%S")}<span class="text-xs text-gray-300">.{msec:03}</span>'
+    html = f'{dt_jp.strftime("%Y%m%d(%a) %H:%M:%S")}'
     return Markup(html)
 
 def whoformat(who):
