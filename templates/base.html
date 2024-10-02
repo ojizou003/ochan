@@ -8,7 +8,7 @@
         <script src="{{ url_for('static', filename='js/toast.min.js') }}"></script>
         <title>{% block title %}{% endblock %}</title>
     </head>
-    <body class="flex flex-col min-h-full bg-gray-100">
+    <body class="flex flex-col min-h-dvh bg-gray-100">
         <!-- Header -->
         <nav class="px-6 py-4 bg-white shadow ">
             <div class="flex items-center max-w-screen-lg mx-auto">
@@ -29,7 +29,7 @@
             {% block content %}{% endblock %}
         </main>
         <!-- Footer -->
-        <footer class="px-6 py-2 bg-gray-800">
+        <footer class="px-6 py-2 bg-gray-800 sticky top-full">
             <div class="flex items-center max-w-screen-lg mx-auto text-gray-100">
                 <a href="#" class="flex-auto">
                     <img class="h-7" src="../static/img/O.png" alt="Ochannel site logo" />
