@@ -6,6 +6,8 @@
         <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" id="favicon">
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="{{ url_for('static', filename='js/toast.min.js') }}"></script>
+        <!-- CKEditorのCDN -->
+        <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body class="flex flex-col min-h-dvh bg-gray-100">
