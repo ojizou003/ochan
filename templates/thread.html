@@ -19,7 +19,7 @@
             {{ res.number }} 名前:{{ res.anon_name | authorformat(res.anon_email) }}
             {{ res.created_at | datetimeformat }} ID:{{ res.who | whoformat }}
         </p>
-        <p>{{res.body}}</p>
+        <div>{{res.body | safe}}</div>
     </div>
     {% endfor %}
 </div>
