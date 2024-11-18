@@ -2,7 +2,6 @@ from datetime import datetime
 import pytz
 
 from flask import Flask, flash, render_template, request, redirect, url_for, jsonify
-from flask_ckeditor import CKEditor
 from werkzeug.exceptions import HTTPException
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import SQLAlchemyError
@@ -35,18 +34,6 @@ app.add_template_filter(uuidshort)
 # ロギングの設定
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-ckeditor = CKEditor(app)
-app.config['CKEDITOR_CONFIG'] = {
-    'extraPlugins': 'image2',
-    'image2_alignClasses': ['image-left', 'image-center', 'image-right'],
-    'image2_disableResizer': True,
-    'removePlugins': 'image',
-    'image2_prefillDimensions': False,
-    'image2_maxSize': {'width': 100, 'height': 100},
-    'contentsCss': ['static/css/style.css'],
-    'allowedContent': True  # この行を追加
-}
 
 @app.get("/")
 def index():

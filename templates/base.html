@@ -8,6 +8,10 @@
         <script src="{{ url_for('static', filename='js/toast.min.js') }}"></script>
         <!-- CKEditorのCDN -->
         <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+        <script>
+            CKEDITOR.disableAutoInline = true;
+            CKEDITOR.config.versionCheck = false;
+        </script>
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body class="flex flex-col min-h-dvh bg-gray-100">
